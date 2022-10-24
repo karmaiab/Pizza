@@ -1,9 +1,9 @@
-const Ingredient = require('./ingredient')
+const Ingredients = require('./ingredient')
 const Pizza = require('./pizza')
 const db = require('../config_db')
 const { Sequelize } = require('sequelize')
 
-const PizzaIngredient = db.define('PizzaIngredient', {
+const PizzaIngredients = db.define('PizzaIngredients', {
     PizzaId: {
         type: Sequelize.INTEGER,
         references: {
@@ -11,21 +11,25 @@ const PizzaIngredient = db.define('PizzaIngredient', {
             key: 'id'
         }
     },
-    IngredientId: {
+    IngredientsId: {
         type: Sequelize.INTEGER,
         references:{
-            model: Ingredient,
+            model: Ingredients,
             key: 'id'
         }
+    },
+    amount: {
+        type: Sequelize.INTEGER,
+        allowNull: false
     }
 },{
     timestamps: false,
     indexes: [
         {
             unique: true,
-            fields: ["PizzaId", "IngredientId"]
+            fields: ["PizzaId", "IngredientsId"]
         }
     ]
 });
 
-module.exports = PizzaIngredient
+module.exports = PizzaIngredients

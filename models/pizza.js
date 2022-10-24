@@ -13,11 +13,11 @@ const Pizza = db.define('pizza', {
         allowNull: false
     },
     description: {
-        type: Sequelize.TEXT,
+        type: Sequelize.TEXT('long'),
         allowNull: false
     },
     image: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT('long'),
         allowNull: false
     }
     },{
